@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useCallback, useState, ReactNode } from "react";
 import { products as fallbackProducts, getProducts, Product } from "@/lib/products";
 
 export interface CartItem {
@@ -75,9 +75,9 @@ export function Providers({ children }: { children: ReactNode }) {
     }
   }, [wishlist]);
 
-  const getProduct = (id: string) => {
+  const getProduct = useCallback((id: string) => {
     return liveProducts.find(p => p.id === id) || fallbackProducts.find(p => p.id === id);
-  };
+  }, [liveProducts]);
 
   const value = useMemo(
     () => ({
@@ -116,7 +116,7 @@ export function Providers({ children }: { children: ReactNode }) {
       getProduct,
       liveProducts
     }),
-    [items, isCartOpen, wishlist, quickViewProduct, liveProducts]
+    [items, isCartOpen, wishlist, quickViewProduct, liveProducts, getProduct]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

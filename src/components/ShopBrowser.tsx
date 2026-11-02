@@ -47,7 +47,7 @@ export function ShopBrowser({ initialCategory = "All", initialProducts }: ShopBr
         if (sort === "name") return a.name.localeCompare(b.name);
         return Number(b.featured) - Number(a.featured);
       });
-  }, [search, category, stockFilter, sort]);
+  }, [search, category, stockFilter, sort, productList]);
 
   const resetFilters = () => {
     setSearch("");

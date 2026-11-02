@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { projects as defaultProjects, projectCategories, Project, getProjects } from "@/lib/projects";
-import { ArrowRight, MapPin, Calendar, CheckCircle2, Wrench, X, ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowRight, MapPin, Calendar, CheckCircle2, Wrench, X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ProjectsPage() {

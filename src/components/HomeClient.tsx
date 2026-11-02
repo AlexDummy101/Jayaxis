@@ -335,7 +335,7 @@ export function HomeClient({ initialProducts, initialProjects }: HomeClientProps
                 </span>
                 <h3 className="text-2xl font-black text-white">Who We Are</h3>
                 <p className="text-xs text-sky-100/80 leading-relaxed">
-                  At Jay Axis Company, we specialize in providing reliable water, civil, structural, and solar energy solutions for domestic, commercial, agricultural, institutional, and industrial clients. Our commitment is to deliver quality workmanship, efficient systems, and sustainable solutions tailored to our clients' needs.
+                  At Jay Axis Company, we specialize in providing reliable water, civil, structural, and solar energy solutions for domestic, commercial, agricultural, institutional, and industrial clients. Our commitment is to deliver quality workmanship, efficient systems, and sustainable solutions tailored to our clients&apos; needs.
                 </p>
               </div>
               <div className="pt-6 relative z-10">

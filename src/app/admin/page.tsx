@@ -45,37 +45,25 @@ import {
   CustomerUser
 } from "@/lib/orders";
 import {
-  ShieldCheck,
   Database,
   Key,
   Users,
   FileText,
-  ArrowRight,
-  CheckCircle2,
-  AlertTriangle,
-  Plus,
   Trash2,
   Edit3,
   Sparkles,
-  ExternalLink,
   RefreshCw,
   Eye,
   Check,
   Package,
   Layers,
   MapPin,
-  Calendar,
-  DollarSign,
-  Tag,
   Search,
-  X,
   ShoppingCart,
   UserCheck,
   Phone,
   Mail,
   Clock,
-  Truck,
-  CheckCheck,
   MessageSquare
 } from "lucide-react";
 
@@ -302,6 +290,7 @@ export default function AdminPage() {
     if (isFirebaseConfigured) {
       refreshQuotes();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ==========================================

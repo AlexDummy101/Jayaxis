@@ -10,15 +10,11 @@ import {
   Users,
   Award,
   FileCheck2,
-  FileText,
   Building2,
   SunMedium,
-  Check,
   AlertCircle,
   Landmark,
-  ShieldAlert,
   Sparkles,
-  PhoneCall,
   HardHat,
   BadgeCheck
 } from "lucide-react";

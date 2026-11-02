@@ -11,12 +11,10 @@ import {
   ArrowRight,
   Search,
   Tag,
-  Share2,
   X,
   FileText,
   Sparkles,
   ExternalLink,
-  ShieldCheck,
   ChevronRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

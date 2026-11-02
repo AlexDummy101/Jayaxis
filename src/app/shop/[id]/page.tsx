@@ -11,7 +11,7 @@ import {
   FileText,
   MessageCircle
 } from "lucide-react";
-import { products, price, getProductById, getProducts } from "@/lib/products";
+import { price, getProductById, getProducts } from "@/lib/products";
 import { AddToCart } from "@/components/ShopActions";
 import { ProductCard } from "@/components/ProductCard";
 
