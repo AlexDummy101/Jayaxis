@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server";export async function POST(){return NextResponse.json({error:"Payment callback processing is not implemented. Do not mark payments successful until callback verification and reconciliation are implemented."},{status:501})}

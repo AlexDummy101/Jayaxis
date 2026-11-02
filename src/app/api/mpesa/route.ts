@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server";export async function POST(){return NextResponse.json({error:"M-Pesa is not configured. Implement and test a secure server-side Daraja STK Push integration before accepting payments."},{status:503})}
