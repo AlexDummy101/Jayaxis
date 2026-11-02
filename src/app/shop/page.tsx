@@ -4,20 +4,12 @@ import { ShieldCheck, Truck, FileText } from "lucide-react";
 
 import { getProducts } from "@/lib/products";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 export const metadata: Metadata = {
   title: "Product Catalogue | Water Pumps, Solar & Infrastructure Equipment",
   description: "Browse Jayaxis Company Ltd's image-rich product catalogue. Water pumps, solar pump inverters, elevated sectional steel tanks, HDPE pipes, and PPE site gear."
 };
 
-export default async function ShopPage({
-  searchParams
-}: {
-  searchParams: Promise<{ category?: string }>;
-}) {
-  const params = await searchParams;
+export default async function ShopPage() {
   const initialProducts = await getProducts();
 
   return (
@@ -50,10 +42,7 @@ export default async function ShopPage({
 
       {/* Main Catalog Browser with Live Search, Categories & Filters */}
       <section className="wrap">
-        <ShopBrowser
-          initialCategory={params.category || "All"}
-          initialProducts={initialProducts}
-        />
+        <ShopBrowser initialProducts={initialProducts} />
       </section>
     </div>
   );

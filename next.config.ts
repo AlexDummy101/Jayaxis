@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const config: NextConfig = {
+  output: "export",
   outputFileTracingRoot: path.resolve(__dirname),
   images: {
     unoptimized: true,
@@ -12,14 +13,6 @@ const config: NextConfig = {
   },
   typescript: {
     ignoreBuildErrors: false,
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/favicon.ico",
-        destination: "/logo.jpeg",
-      },
-    ];
   },
 };
 

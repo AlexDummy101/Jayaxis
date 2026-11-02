@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { Search, X, RefreshCw } from "lucide-react";
 import { products as defaultProducts, categories, getProducts, Product } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
@@ -10,10 +11,12 @@ interface ShopBrowserProps {
   initialProducts?: Product[];
 }
 
-export function ShopBrowser({ initialCategory = "All", initialProducts }: ShopBrowserProps) {
+function ShopBrowserContent({ initialCategory = "All", initialProducts }: ShopBrowserProps) {
+  const searchParams = useSearchParams();
+  const urlCategory = searchParams.get("category") || initialCategory;
   const [productList, setProductList] = useState<Product[]>(initialProducts || defaultProducts);
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState(initialCategory);
+  const [category, setCategory] = useState(urlCategory);
   const [stockFilter, setStockFilter] = useState("All");
   const [sort, setSort] = useState("featured");
 
@@ -193,3 +196,12 @@ export function ShopBrowser({ initialCategory = "All", initialProducts }: ShopBr
     </div>
   );
 }
+
+export function ShopBrowser(props: ShopBrowserProps) {
+  return (
+    <Suspense fallback={<div className="py-12 text-center text-sm text-slate-400">Loading catalog...</div>}>
+      <ShopBrowserContent {...props} />
+    </Suspense>
+  );
+}
+

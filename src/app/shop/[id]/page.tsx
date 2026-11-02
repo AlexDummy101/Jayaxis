@@ -15,8 +15,6 @@ import { price, getProductById, getProducts } from "@/lib/products";
 import { AddToCart } from "@/components/ShopActions";
 import { ProductCard } from "@/components/ProductCard";
 
-export const dynamic = "force-dynamic";
-
 export async function generateStaticParams() {
   const all = await getProducts();
   return all.map(p => ({ id: p.id }));
