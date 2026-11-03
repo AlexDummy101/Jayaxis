@@ -73,7 +73,7 @@ export function Navbar() {
             </span>
             <div className="flex items-center gap-2 text-sky-300">
               <a
-                href="https://wa.me/254710747090"
+                href="https://wa.me/+254185224887"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-emerald-400 transition-colors p-1"
@@ -330,7 +330,7 @@ export function Navbar() {
                     href="tel:+254710747090"
                     className="w-full text-center bg-slate-900 text-white font-bold py-2.5 rounded-xl text-xs"
                   >
-                    Call (+254) 710 747 090
+                    Call (+254) 185 224 887
                   </a>
                 </div>
               </div>
@@ -366,7 +366,7 @@ function FloatingActions() {
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
       {/* WhatsApp Quick Chat Floating Button */}
       <a
-        href="https://wa.me/254710747090?text=Hello%20Jayaxis,%20I%20would%20like%20to%20inquire%20about%20your%20services%20and%20products."
+        href="https://wa.me/+254185224887?text=Hello%20Jayaxis,%20I%20would%20like%20to%20inquire%20about%20your%20services%20and%20products."
         target="_blank"
         rel="noreferrer"
         className="w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/30 hover:scale-105 transition-all"
@@ -505,12 +505,17 @@ export function Footer() {
               <div className="flex items-center gap-2.5">
                 <Phone size={16} className="text-sky-400 flex-shrink-0" />
                 <a href="tel:+254710747090" className="hover:text-white">
-                  (+254) 710 747 090
+                  (+254) 185 224 887
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <MessageCircle size={16} className="text-emerald-400 flex-shrink-0" />
-                <a href="https://wa.me/254710747090" target="_blank" rel="noreferrer" className="hover:text-white">
+                <a href="https://wa.me/+254185224887    
+                
+                
+                
+                
+                " target="_blank" rel="noreferrer" className="hover:text-white">
                   WhatsApp Support Desk
                 </a>
               </div>
