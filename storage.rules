@@ -1,0 +1,22 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    match /site-images/{category}/{imageName} {
+      allow read: if category in ['products', 'projects', 'news'];
+      allow create, update: if isAdmin()
+        && category in ['products', 'projects', 'news']
+        && request.resource.size <= 10 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|png|webp|gif|avif)');
+      allow delete: if isAdmin() && category in ['products', 'projects', 'news'];
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

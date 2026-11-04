@@ -1,6 +1,7 @@
 import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
 import { getAuth, type Auth } from "firebase/auth";
 import { getFirestore, type Firestore } from "firebase/firestore";
+import { getStorage, type FirebaseStorage } from "firebase/storage";
 import { getAnalytics, isSupported, type Analytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
@@ -22,6 +23,7 @@ export const app: FirebaseApp = getApps().length > 0 ? getApp() : initializeApp(
 // Authentication & Cloud Firestore
 export const auth: Auth = getAuth(app);
 export const db: Firestore = getFirestore(app);
+export const storage: FirebaseStorage = getStorage(app);
 
 // Safe client-side analytics initialization (avoids SSR errors on the server)
 let analytics: Analytics | null = null;

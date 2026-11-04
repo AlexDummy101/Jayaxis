@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { db, isFirebaseConfigured } from "@/lib/firebase";
 import { AdminAuthGate } from "@/components/AdminAuthGate";
+import { ImageUploadField } from "@/components/ImageUploadField";
 import {
   products as defaultProducts,
   categories as productCategories,
@@ -933,19 +934,13 @@ function AdminDashboard() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="sm:col-span-2 space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700">
-                    Image Source Path (e.g. /steel.jpeg or /jay-e.jpeg)
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={productForm.src || ""}
-                    onChange={e => setProductForm({ ...productForm, src: e.target.value })}
-                    placeholder="/steel.jpeg"
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-sky-500 font-mono"
-                  />
-                </div>
+                <ImageUploadField
+                  folder="products"
+                  value={productForm.src || ""}
+                  onChange={src => setProductForm(current => ({ ...current, src }))}
+                  className="sm:col-span-2"
+                  required
+                />
 
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-700">Pricing Mode</label>
@@ -1247,19 +1242,12 @@ function AdminDashboard() {
                 </div>
               </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700">
-                  Image Source Path (e.g. /steel.jpeg or /jay-e.jpeg)
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={projectForm.src || ""}
-                  onChange={e => setProjectForm({ ...projectForm, src: e.target.value })}
-                  placeholder="/steel.jpeg"
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-sky-500 font-mono"
-                />
-              </div>
+              <ImageUploadField
+                folder="projects"
+                value={projectForm.src || ""}
+                onChange={src => setProjectForm(current => ({ ...current, src }))}
+                required
+              />
 
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-700">Project Scope & Engineering Summary</label>
@@ -1482,18 +1470,12 @@ function AdminDashboard() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700">
-                    Image Source Path (e.g. /jay-e.jpeg or /steel.jpeg)
-                  </label>
-                  <input
-                    type="text"
-                    value={articleForm.src || ""}
-                    onChange={e => setArticleForm({ ...articleForm, src: e.target.value })}
-                    placeholder="/jay-e.jpeg"
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-sky-500"
-                  />
-                </div>
+                <ImageUploadField
+                  folder="news"
+                  value={articleForm.src || ""}
+                  onChange={src => setArticleForm(current => ({ ...current, src }))}
+                  className="md:col-span-3"
+                />
 
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-700">Author</label>
