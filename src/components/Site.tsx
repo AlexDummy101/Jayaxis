@@ -24,6 +24,7 @@ import { services } from "@/lib/services";
 import { CartDrawer } from "@/components/CartDrawer";
 import { QuickViewModal } from "@/components/QuickViewModal";
 import { motion, AnimatePresence } from "framer-motion";
+import { SiFacebook, SiInstagram, SiTiktok, SiX } from "react-icons/si";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -550,6 +551,48 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} Jayaxis Company Ltd. All rights reserved. Engineering, water, and structural solutions.
           </p>
+          <nav aria-label="Social media" className="flex items-center gap-4 text-slate-400">
+            <a
+              href="https://www.instagram.com/jayaxis/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Jayaxis on Instagram"
+              title="Instagram"
+              className="hover:text-white transition-colors"
+            >
+              <SiInstagram size={17} />
+            </a>
+            <a
+              href="https://www.facebook.com/jayaxis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Jayaxis on Facebook"
+              title="Facebook"
+              className="hover:text-white transition-colors"
+            >
+              <SiFacebook size={17} />
+            </a>
+            <a
+              href="https://www.tiktok.com/@jayaxis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Jayaxis on TikTok"
+              title="TikTok"
+              className="hover:text-white transition-colors"
+            >
+              <SiTiktok size={17} />
+            </a>
+            <a
+              href="https://x.com/jayaxis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Jayaxis on X"
+              title="X"
+              className="hover:text-white transition-colors"
+            >
+              <SiX size={17} />
+            </a>
+          </nav>
           <div className="flex items-center gap-4 text-slate-400">
             <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
