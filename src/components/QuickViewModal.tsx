@@ -163,7 +163,7 @@ export function QuickViewModal() {
                 <div className="space-y-3 pt-3 border-t border-slate-100">
                   {quickViewProduct.stock === "Coming soon" ? (
                     <a
-                      href={`https://wa.me/254710747090?text=${encodeURIComponent(`Hello Jayaxis Company Ltd, I am inquiring about *${quickViewProduct.name}* (${quickViewProduct.sku}) which is coming soon.`)}`}
+                      href={`https://wa.me/254185224887?text=${encodeURIComponent(`Hello Jayaxis Company Ltd, I am inquiring about *${quickViewProduct.name}* (${quickViewProduct.sku}) which is coming soon.`)}`}
                       target="_blank"
                       rel="noreferrer"
                       className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold h-10 px-4 rounded-xl text-xs transition-all shadow-md shadow-emerald-600/20"

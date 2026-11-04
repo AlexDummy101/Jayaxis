@@ -208,7 +208,7 @@ export default async function ProductDetailPage({
               <div className="pt-4 border-t border-slate-100 space-y-3">
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a
-                    href={`https://wa.me/254710747090?text=${encodeURIComponent(`Hello Jayaxis Company Ltd, I am inquiring about the upcoming product *${product.name}* (${product.sku}). Please notify me when available.`)}`}
+                    href={`https://wa.me/254185224887?text=${encodeURIComponent(`Hello Jayaxis Company Ltd, I am inquiring about the upcoming product *${product.name}* (${product.sku}). Please notify me when available.`)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm py-3.5 px-6 rounded-xl transition-all shadow-md shadow-emerald-600/20"
@@ -236,7 +236,7 @@ export default async function ProductDetailPage({
                   </Link>
 
                   <a
-                    href={`https://wa.me/254710747090?text=Hello%20Jayaxis,%20I%20would%20like%20to%20inquire%20about%20the%20${encodeURIComponent(product.name)}%20(${product.sku}).`}
+                    href={`https://wa.me/254185224887?text=Hello%20Jayaxis,%20I%20would%20like%20to%20inquire%20about%20the%20${encodeURIComponent(product.name)}%20(${product.sku}).`}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 px-4 rounded-xl transition-colors"

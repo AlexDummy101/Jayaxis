@@ -47,11 +47,11 @@ export function Navbar() {
           {/* Contact Details */}
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <a
-              href="tel:+254710747090"
+              href="tel:+254185224887"
               className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
             >
               <Phone size={13} className="text-sky-400" />
-              <span>Hotline: <strong className="text-white">(+254) 710 747 090</strong></span>
+              <span>Hotline: <strong className="text-white">(+254) 185 224 887</strong></span>
             </a>
             <a
               href="mailto:jayaxiscompany@gmail.com"
@@ -143,7 +143,7 @@ export function Navbar() {
                         onClick={() => setServicesDropdownOpen(false)}
                         className="text-xs font-bold text-slate-500 hover:text-sky-600 inline-flex items-center gap-1"
                       >
-                        View all 8 services <ArrowUpRight size={13} />
+                        View all our services <ArrowUpRight size={13} />
                       </Link>
                     </div>
 
@@ -327,7 +327,7 @@ export function Navbar() {
                     Request a Quote
                   </Link>
                   <a
-                    href="tel:+254710747090"
+                    href="tel:+254185224887"
                     className="w-full text-center bg-slate-900 text-white font-bold py-2.5 rounded-xl text-xs"
                   >
                     Call (+254) 185 224 887
@@ -504,7 +504,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone size={16} className="text-sky-400 flex-shrink-0" />
-                <a href="tel:+254710747090" className="hover:text-white">
+                <a href="tel:+254185224887" className="hover:text-white">
                   (+254) 185 224 887
                 </a>
               </div>

@@ -134,7 +134,7 @@ Please review and assist with pricing and scope.`;
         {/* WhatsApp Fast Track Button */}
         <div className="pt-4 space-y-3">
           <a
-            href={`https://wa.me/254710747090?text=${getWhatsAppMessage()}`}
+            href={`https://wa.me/254185224887?text=${getWhatsAppMessage()}`}
             target="_blank"
             rel="noreferrer"
             className="w-full inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 px-6 rounded-xl text-xs transition-all shadow-lg shadow-emerald-500/25"

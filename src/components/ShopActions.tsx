@@ -70,7 +70,7 @@ export function AddToCart({ id, productName, product }: { id: string; productNam
       {/* Direct WhatsApp Quick Inquire */}
       {productName && (
         <a
-          href={`https://wa.me/254710747090?text=${encodeURIComponent(`Hello Jayaxis Company Ltd, I am inquiring about *${productName}* (Qty: ${quantity}). Please provide quotation and availability details.`)}`}
+          href={`https://wa.me/254185224887?text=${encodeURIComponent(`Hello Jayaxis Company Ltd, I am inquiring about *${productName}* (Qty: ${quantity}). Please provide quotation and availability details.`)}`}
           target="_blank"
           rel="noreferrer"
           className="h-11 px-4 rounded-xl border border-emerald-500/30 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 flex items-center justify-center gap-1.5 font-bold text-xs transition-colors whitespace-nowrap"

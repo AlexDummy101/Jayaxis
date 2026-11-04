@@ -56,7 +56,7 @@ export default function ContactPage() {
             </div>
             <h3 className="text-sm font-extrabold text-slate-900">Phone Support</h3>
             <p className="text-xs text-slate-500">Direct engineering line</p>
-            <a href="tel:+254710747090" className="text-xs font-bold text-sky-600 hover:text-sky-800 block">
+            <a href="tel:+254185224887" className="text-xs font-bold text-sky-600 hover:text-sky-800 block">
               (+254) 185  224 887
             </a>
           </div>

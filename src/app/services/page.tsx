@@ -49,7 +49,7 @@ export default function ServicesPage() {
             <FileText size={15} /> Request Service Quotation
           </Link>
           <a
-            href="tel:+254700000000"
+            href="tel:+254185224887"
             className="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs px-5 py-3 rounded-xl"
           >
             <Phone size={15} /> Speak to an Engineer
@@ -136,7 +136,7 @@ export default function ServicesPage() {
                       </Link>
 
                       <a
-                        href={`https://wa.me/254700000000?text=Hello%20Jayaxis,%20I%20would%20like%20to%20inquire%20about%20${encodeURIComponent(s.name)}.`}
+                        href={`https://wa.me/254185224887?text=Hello%20Jayaxis,%20I%20would%20like%20to%20inquire%20about%20${encodeURIComponent(s.name)}.`}
                         target="_blank"
                         rel="noreferrer"
                         className="text-xs text-emerald-600 hover:text-emerald-700 font-bold inline-flex items-center gap-1"
