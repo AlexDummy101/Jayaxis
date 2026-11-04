@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { db, isFirebaseConfigured } from "@/lib/firebase";
+import { AdminAuthGate } from "@/components/AdminAuthGate";
 import {
   products as defaultProducts,
   categories as productCategories,
@@ -67,7 +68,7 @@ import {
   MessageSquare
 } from "lucide-react";
 
-export default function AdminPage() {
+function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<"products" | "projects" | "news" | "quotes" | "orders" | "users" | "config">("products");
   const [statusMsg, setStatusMsg] = useState<{ text: string; type: "success" | "error" | "info" } | null>(null);
 
@@ -2191,5 +2192,13 @@ export default function AdminPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function AdminPage() {
+  return (
+    <AdminAuthGate>
+      <AdminDashboard />
+    </AdminAuthGate>
   );
 }
