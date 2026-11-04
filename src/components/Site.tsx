@@ -594,7 +594,7 @@ export function Footer() {
         {/* Subfooter */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            © {new Date().getFullYear()} Jayaxis Company Ltd. All rights reserved. Engineering, water, and structural solutions.
+            © {new Date().getFullYear()} Jayaxis Company Ltd. All rights reserved.
           </p>
           <nav aria-label="Social media" className="flex items-center gap-4 text-slate-400">
             <a
