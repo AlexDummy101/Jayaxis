@@ -495,7 +495,7 @@ export function Footer() {
               <p className="mb-3 text-[10px] font-bold uppercase text-slate-400">Follow Jayaxis</p>
               <nav aria-label="Jayaxis social media" className="flex items-center gap-4 text-slate-400">
                 <a
-                  href="https://www.instagram.com/jayaxis/"
+                  href="https://www.instagram.com/jayaxiscompany_ltd/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Jayaxis on Instagram"
@@ -598,7 +598,7 @@ export function Footer() {
           </p>
           <nav aria-label="Social media" className="flex items-center gap-4 text-slate-400">
             <a
-              href="https://www.instagram.com/jayaxis/"
+              href="https://www.instagram.com/jayaxiscompany_ltd/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Jayaxis on Instagram"
