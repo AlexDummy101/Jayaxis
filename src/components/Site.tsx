@@ -515,7 +515,7 @@ export function Footer() {
                   <SiFacebook size={17} />
                 </a>
                 <a
-                  href="https://www.tiktok.com/@jayaxis"
+                  href="https://www.tiktok.com/@jayaxis_company"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Jayaxis on TikTok"
@@ -525,7 +525,7 @@ export function Footer() {
                   <SiTiktok size={17} />
                 </a>
                 <a
-                  href="https://x.com/jayaxis"
+                  href="https://x.com/JAYAXIS_COMPANY"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Jayaxis on X"
@@ -618,7 +618,7 @@ export function Footer() {
               <SiFacebook size={17} />
             </a>
             <a
-              href="https://www.tiktok.com/@jayaxis"
+              href="https://www.tiktok.com/@jayaxis_company"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Jayaxis on TikTok"
@@ -628,7 +628,7 @@ export function Footer() {
               <SiTiktok size={17} />
             </a>
             <a
-              href="https://x.com/jayaxis"
+              href="https://x.com/JAYAXIS_COMPANY"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Jayaxis on X"
