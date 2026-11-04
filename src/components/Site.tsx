@@ -491,6 +491,51 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
+            <div className="mt-5 border-t border-slate-800 pt-4">
+              <p className="mb-3 text-[10px] font-bold uppercase text-slate-400">Follow Jayaxis</p>
+              <nav aria-label="Jayaxis social media" className="flex items-center gap-4 text-slate-400">
+                <a
+                  href="https://www.instagram.com/jayaxis/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Jayaxis on Instagram"
+                  title="Instagram"
+                  className="hover:text-white transition-colors"
+                >
+                  <SiInstagram size={17} />
+                </a>
+                <a
+                  href="https://www.facebook.com/jayaxis"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Jayaxis on Facebook"
+                  title="Facebook"
+                  className="hover:text-white transition-colors"
+                >
+                  <SiFacebook size={17} />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@jayaxis"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Jayaxis on TikTok"
+                  title="TikTok"
+                  className="hover:text-white transition-colors"
+                >
+                  <SiTiktok size={17} />
+                </a>
+                <a
+                  href="https://x.com/jayaxis"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Jayaxis on X"
+                  title="X"
+                  className="hover:text-white transition-colors"
+                >
+                  <SiX size={17} />
+                </a>
+              </nav>
+            </div>
           </div>
 
           {/* Column 4: Contact & Location */}
