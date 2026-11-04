@@ -39,7 +39,7 @@ const heroSlides = [
   {
     kicker: "GROUNDWATER TO DELIVERY",
     title: "Borehole Drilling & ",
-    highlight: "Deep Well Automation.",
+    highlight: "Equiping.",
     text: "Drilling and Pump installation at affordable rates.",
     image: "jay-e.jpeg",
     badge: "Certified WRMA Standards",
