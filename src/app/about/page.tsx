@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { value: "11", label: "Confirmed Engineering Services" },
+  { value: "High Quality", label: "Confirmed Engineering Services" },
   { value: "47", label: "Counties Mobilized Nationwide" },
   { value: "100%", label: "Factory-Warranted Equipment" },
   { value: "24h", label: "Rapid Quotation Response" }
@@ -81,18 +81,18 @@ const commitmentPillars = [
 const commitmentFocusAreas = [
   {
     icon: Droplets,
-    title: "Sustainable Water Access",
-    desc: "Delivering perennial clean water to households, farms, institutions, and municipal developments through scientific aquifer targeting."
+    title: "Top quality borehole drilling services.",
+    desc: "Delivering perennial clean water to households, farms, and institutions through scientific aquifer targeting."
   },
   {
     icon: Building2,
-    title: "Infrastructure Development",
-    desc: "Designing and erecting heavy-duty elevated steel water storage towers, concrete foundations, and civil distribution networks."
+    title: "Pump System",
+    desc: "Equipping and engineering heavy-duty submersible pumping and distribution systems to ensure optimal, continuous water flow and pressure across your network."
   },
   {
     icon: SunMedium,
-    title: "Clean Energy Adoption",
-    desc: "Powering submersible pumping systems with high-efficiency solar PV arrays and hybrid inverter drives for zero-fuel water security."
+    title: "Solar Energy Systems",
+    desc: "Powering sustainable operations with high-efficiency solar PV arrays and hybrid inverter drives for zero-fuel, energy-independent water security."
   }
 ];
 
