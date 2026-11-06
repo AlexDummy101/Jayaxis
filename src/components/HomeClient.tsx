@@ -23,7 +23,7 @@ import { QuoteForm } from "@/components/QuoteForm";
 
 const heroSlides = [
   {
-    kicker: "WATER • PUMPS • SOLAR SOLUTIONS",
+    kicker: "WATER • PUMPS • SOLAR",
     title: "Steel and  Concrete towers.",
     highlight: "Stronger and Durable Structures.",
     text: "We build long-lasting steel and concrete structures to serve generations.",
