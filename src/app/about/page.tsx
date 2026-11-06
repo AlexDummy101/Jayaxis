@@ -62,9 +62,9 @@ const commitmentPillars = [
     desc: "Precision engineering, genuine factory-warranted equipment, and structural materials compliant with Kenyan and BS standards."
   },
   {
-    title: "Reliability",
-    subtitle: "Dependable Performance",
-    desc: "Uninterrupted groundwater flow, durable pump configurations, and robust elevated steel towers engineered to endure harsh elements."
+    title: "Cost Friendly Solutions",
+    subtitle: "Budget-Conscious impact",
+    desc: "We are dedicated to provide practical, cost-effective solutions that balance upfront investment with long-term operational efficiency and durability."
   },
   {
     title: "Safety",
