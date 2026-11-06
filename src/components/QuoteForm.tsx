@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { CheckCircle2, MessageCircle, Send } from "lucide-react";
+import { AlertCircle, CheckCircle2, MessageCircle, Send } from "lucide-react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db, isFirebaseConfigured } from "@/lib/firebase";
 import { services } from "@/lib/services";
 
 export const kenyanCounties = [
@@ -36,6 +38,7 @@ export function QuoteForm({ initialItem = "" }: QuoteFormProps) {
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [refNumber, setRefNumber] = useState("");
+  const [submissionError, setSubmissionError] = useState("");
 
   useEffect(() => {
     // Check if there are query parameters in URL (e.g. from cart or product)
@@ -69,30 +72,51 @@ export function QuoteForm({ initialItem = "" }: QuoteFormProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("submitting");
+    setSubmissionError("");
 
     // Generate reference code JAX-2026-XXXX
     const generatedRef = `JAX-2026-${Math.floor(1000 + Math.random() * 9000)}`;
     setRefNumber(generatedRef);
 
     try {
-      const res = await fetch("/api/quotes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, refNumber: generatedRef })
-      });
-
-      if (!res.ok) {
-        console.warn("Quote API returned non-200; submitting via client fallback.");
+      if (!isFirebaseConfigured || !db) {
+        throw new Error("Firebase is not configured. Please contact us directly to submit your quotation request.");
       }
 
-      // Simulated success fallback even if API is offline
-      setTimeout(() => {
-        setStatus("success");
-      }, 600);
-    } catch {
-      setTimeout(() => {
-        setStatus("success");
-      }, 600);
+      const scope = [
+        `Inquiry type: ${formData.inquiryType}`,
+        formData.scope.trim() ? `Scope: ${formData.scope.trim()}` : "",
+        formData.budget.trim() ? `Budget: ${formData.budget.trim()}` : "",
+        formData.timeline ? `Timeline: ${formData.timeline}` : "",
+        formData.contactMethod ? `Preferred contact: ${formData.contactMethod}` : ""
+      ].filter(Boolean).join("\n");
+
+      await addDoc(collection(db, "quotation_requests"), {
+        customer_name: formData.name.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim() || null,
+        customer_company: formData.company.trim() || null,
+        item_requested: formData.service.trim() || formData.items.trim() || "Engineering inquiry",
+        inquiry_type: formData.inquiryType,
+        county: formData.county,
+        town: formData.town.trim() || null,
+        scope,
+        ref_number: generatedRef,
+        status: "new",
+        created_at: serverTimestamp()
+      });
+
+      setStatus("success");
+    } catch (error: unknown) {
+      const code = (error as { code?: string })?.code;
+      if (code === "permission-denied") {
+        setSubmissionError("Firebase rejected the request. Please contact us directly while we resolve the database permissions.");
+      } else if (code === "unavailable" || code === "network-request-failed") {
+        setSubmissionError("Could not reach Firebase. Check your connection and try submitting again.");
+      } else {
+        setSubmissionError(error instanceof Error ? error.message : "Your request could not be saved. Please try again.");
+      }
+      setStatus("error");
     }
   };
 
@@ -162,6 +186,13 @@ Please review and assist with pricing and scope.`;
           Provide your specifications below. We arrange site assessments and competitive pricing for projects throughout Kenya.
         </p>
       </div>
+
+      {status === "error" && submissionError && (
+        <div role="alert" className="flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 p-4 text-xs text-red-700">
+          <AlertCircle size={17} className="mt-0.5 shrink-0" />
+          <span>{submissionError}</span>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {/* Full Name */}
@@ -371,7 +402,7 @@ Please review and assist with pricing and scope.`;
 
       <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-[11px] text-slate-500">
-          🔒 Your details are kept confidential and used solely for engineering quotation preparation.
+          🔒 Your details are kept confidential as per Data protection act and our privacy policy and used solely for thequotation preparation.
         </p>
 
         <button

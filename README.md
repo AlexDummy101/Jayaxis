@@ -18,7 +18,7 @@ The command preserves existing custom claims and grants `admin: true` to `jayaxi
 Product, project, and news images are uploaded to Firebase Storage. The Storage rules make those images publicly readable by the website, while uploads and deletion require the `admin: true` claim. Deploy the rules after selecting the Firebase project:
 
 ```powershell
-firebase deploy --only storage --project jay-axis
+firebase deploy --only firestore:rules,storage --project jay-axis
 ```
 
 Uploads accept JPEG, PNG, WebP, GIF, and AVIF files up to 10 MB. Each new image URL is saved with the product, project, or news record when its form is submitted.

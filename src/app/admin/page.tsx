@@ -153,6 +153,7 @@ function AdminDashboard() {
   }
   const [quotes, setQuotes] = useState<QuoteDoc[]>([]);
   const [loadingQuotes, setLoadingQuotes] = useState(false);
+  const [quotesError, setQuotesError] = useState("");
 
   // ==========================================
   // ORDERS STATE
@@ -211,6 +212,7 @@ function AdminDashboard() {
   async function refreshQuotes() {
     if (!isFirebaseConfigured || !db) return;
     setLoadingQuotes(true);
+    setQuotesError("");
     try {
       const q = query(collection(db, "quotation_requests"), orderBy("created_at", "desc"));
       const snap = await getDocs(q);
@@ -221,6 +223,7 @@ function AdminDashboard() {
       setQuotes(list);
     } catch (err) {
       console.warn("Could not load quotes from Firestore:", err);
+      setQuotesError("Could not load quotation requests from Firebase. Check the connection and Firestore admin read permissions.");
     } finally {
       setLoadingQuotes(false);
     }
@@ -1624,7 +1627,13 @@ function AdminDashboard() {
             </button>
           </div>
 
-          {quotes.length === 0 ? (
+          {quotesError && (
+            <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-4 text-xs text-red-700">
+              {quotesError}
+            </div>
+          )}
+
+          {quotes.length === 0 && !quotesError ? (
             <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center space-y-3">
               <Users size={36} className="text-slate-300 mx-auto" />
               <h4 className="text-base font-bold text-slate-800">No quotation requests yet</h4>
@@ -1632,7 +1641,7 @@ function AdminDashboard() {
                 When clients fill in the Request a Quote form, their details, county, and requirements will appear here in real time.
               </p>
             </div>
-          ) : (
+          ) : quotes.length > 0 ? (
             <div className="grid grid-cols-1 gap-4">
               {quotes.map(q => (
                 <div
@@ -1658,7 +1667,7 @@ function AdminDashboard() {
                 </div>
               ))}
             </div>
-          )}
+          ) : null}
         </div>
       )}
 
