@@ -22,11 +22,10 @@ export const metadata: Metadata = {
   authors: [{ name: "Jayaxis Company Ltd" }],
   icons: {
     icon: [
-      { url: "/logo.jpeg" },
-      { url: "/logo.jpeg", type: "image/jpeg" }
+      { url: "/favicon.png", type: "image/png" }
     ],
-    shortcut: "/logo.jpeg",
-    apple: "/logo.jpeg"
+    shortcut: "/favicon.png",
+    apple: "/favicon.png"
   },
   openGraph: {
     title: "Jayaxis Company Ltd | Water Infrastructure & Engineering Equipment",
