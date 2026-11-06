@@ -17,6 +17,8 @@ interface ImageUploadFieldProps {
 }
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const UPLOAD_TIMEOUT_MS = 60_000;
+const DOWNLOAD_URL_TIMEOUT_MS = 15_000;
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/avif"];
 
 export function ImageUploadField({
@@ -27,6 +29,7 @@ export function ImageUploadField({
   required = false
 }: ImageUploadFieldProps) {
   const [progress, setProgress] = useState<number | null>(null);
+  const [uploadPhase, setUploadPhase] = useState<"uploading" | "finalizing" | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [uploaded, setUploaded] = useState(false);
 
@@ -48,33 +51,65 @@ export function ImageUploadField({
     }
 
     setProgress(0);
+    setUploadPhase("uploading");
     try {
       const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "-").slice(-100) || "image";
       const imageRef = ref(storage, `site-images/${folder}/${crypto.randomUUID()}-${safeName}`);
       const task = uploadBytesResumable(imageRef, file, { contentType: file.type });
+      let uploadTimedOut = false;
+      const uploadTimeout = setTimeout(() => {
+        uploadTimedOut = true;
+        task.cancel();
+      }, UPLOAD_TIMEOUT_MS);
 
-      await new Promise<void>((resolve, reject) => {
-        task.on(
-          "state_changed",
-          snapshot => setProgress(Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)),
-          reject,
-          resolve
-        );
-      });
+      try {
+        await new Promise<void>((resolve, reject) => {
+          task.on(
+            "state_changed",
+            snapshot => setProgress(Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)),
+            reject,
+            resolve
+          );
+        });
+      } catch (error) {
+        if (uploadTimedOut) {
+          throw Object.assign(new Error("The upload took longer than 60 seconds."), { code: "storage/upload-timeout" });
+        }
+        throw error;
+      } finally {
+        clearTimeout(uploadTimeout);
+      }
 
-      onChange(await getDownloadURL(task.snapshot.ref));
+      setUploadPhase("finalizing");
+      let downloadUrlTimeout: ReturnType<typeof setTimeout>;
+      const downloadUrl = await Promise.race([
+        getDownloadURL(task.snapshot.ref),
+        new Promise<never>((_, reject) => {
+          downloadUrlTimeout = setTimeout(
+            () => reject(Object.assign(new Error("Timed out while requesting the image URL."), { code: "storage/download-url-timeout" })),
+            DOWNLOAD_URL_TIMEOUT_MS
+          );
+        })
+      ]).finally(() => clearTimeout(downloadUrlTimeout));
+
+      onChange(downloadUrl);
       setUploaded(true);
     } catch (error: unknown) {
       const code = (error as { code?: string })?.code;
-      if (code === "storage/unauthorized") {
+      if (code === "storage/bucket-not-found" || code === "storage/no-default-bucket") {
+        setErrorMessage("Firebase Storage bucket was not found. Enable Storage in Firebase Console and check NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET.");
+      } else if (code === "storage/unauthorized") {
         setErrorMessage("Firebase Storage rejected this upload. Deploy the Storage rules and sign in with an authorized admin account.");
       } else if (code === "storage/quota-exceeded") {
         setErrorMessage("Firebase Storage quota has been exceeded.");
+      } else if (code === "storage/upload-timeout" || code === "storage/retry-limit-exceeded" || code === "storage/download-url-timeout") {
+        setErrorMessage("Firebase Storage did not respond in time. Check that the bucket exists, the Storage rules are deployed, and your connection is working.");
       } else {
-        setErrorMessage("Image upload failed. Check your connection and try again.");
+        setErrorMessage(`Image upload failed${code ? ` (${code})` : ""}. Check Firebase Storage setup and try again.`);
       }
     } finally {
       setProgress(null);
+      setUploadPhase(null);
     }
   }
 
@@ -96,14 +131,16 @@ export function ImageUploadField({
           placeholder="/steel.jpeg or paste an image URL"
           className="min-w-0 w-full rounded-xl border border-slate-200 px-4 py-2.5 font-mono text-xs focus:border-sky-500 focus:outline-none sm:text-sm"
         />
-        <label className={`inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-sky-200 bg-sky-50 px-4 py-2.5 text-xs font-bold text-sky-700 transition-colors hover:bg-sky-100 ${progress !== null ? "pointer-events-none opacity-60" : ""}`}>
-          {progress !== null ? <LoaderCircle size={15} className="animate-spin" /> : <Upload size={15} />}
-          <span>{progress !== null ? `Uploading ${progress}%` : "Upload image"}</span>
+        <label className={`inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-sky-200 bg-sky-50 px-4 py-2.5 text-xs font-bold text-sky-700 transition-colors hover:bg-sky-100 ${uploadPhase !== null ? "pointer-events-none opacity-60" : ""}`}>
+          {uploadPhase !== null ? <LoaderCircle size={15} className="animate-spin" /> : <Upload size={15} />}
+          <span>
+            {uploadPhase === "uploading" ? `Uploading ${progress ?? 0}%` : uploadPhase === "finalizing" ? "Getting image URL..." : "Upload image"}
+          </span>
           <input
             type="file"
             accept={ALLOWED_IMAGE_TYPES.join(",")}
             onChange={handleFileChange}
-            disabled={progress !== null}
+            disabled={uploadPhase !== null}
             className="sr-only"
           />
         </label>
