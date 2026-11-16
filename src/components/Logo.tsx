@@ -13,21 +13,21 @@ export function Logo({ variant = "default", className = "", size = "md" }: LogoP
   const isLight = variant === "light";
   const isMarkOnly = variant === "markOnly";
 
-  // Aspect ratio is 880 x 360 (~2.44)
+  // Aspect ratio is 1074 x 454 (~2.37)
   const sizes = {
     sm: {
       width: 140,
-      height: 56,
+      height: 59,
       containerClass: "h-9 sm:h-10 w-auto"
     },
     md: {
       width: 175,
-      height: 70,
+      height: 74,
       containerClass: "h-11 sm:h-12 w-auto"
     },
     lg: {
       width: 220,
-      height: 88,
+      height: 93,
       containerClass: "h-14 sm:h-16 w-auto"
     }
   };
@@ -65,7 +65,7 @@ export function Logo({ variant = "default", className = "", size = "md" }: LogoP
         <div className="bg-white rounded-xl py-2 px-3 shadow-md border border-slate-200/40 inline-flex items-center">
           <Image
             src="/jayaxis-brand.png"
-            alt="Jayaxis Company Ltd - Civil | Structural | Water"
+            alt="Jayaxis Company Limited - Water is Energy"
             width={selectedSize.width}
             height={selectedSize.height}
             className={`${selectedSize.containerClass} object-contain`}
@@ -85,7 +85,7 @@ export function Logo({ variant = "default", className = "", size = "md" }: LogoP
       <div className="inline-flex items-center py-0.5">
         <Image
           src="/jayaxis-brand.png"
-          alt="Jayaxis Company Ltd - Civil | Structural | Water"
+          alt="Jayaxis Company Limited - Water is Energy"
           width={selectedSize.width}
           height={selectedSize.height}
           className={`${selectedSize.containerClass} object-contain`}

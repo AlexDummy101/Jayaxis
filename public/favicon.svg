@@ -1,10 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <polygon points="24,2 45,13.5 45,34.5 24,46 3,34.5 3,13.5" fill="#0284c7" />
-  <polygon points="24,5 42,15 42,33 24,43 6,33 6,15" fill="#002b69" />
-  <line x1="24" y1="7" x2="24" y2="41" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.75" />
-  <line x1="8" y1="24" x2="40" y2="24" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.75" />
-  <path d="M17 14 H22 V28 C22 31.5 19.5 33.5 16 33.5 C13.5 33.5 12 32 12 30.5" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M26 33 L32 14 L38 33" stroke="#38bdf8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M28.5 26.5 H35.5" stroke="#38bdf8" stroke-width="2.8" stroke-linecap="round" />
-  <circle cx="24" cy="24" r="2.5" fill="#ffffff" />
+  <path d="M24 3C20.8 9.5 9 20.2 9 29a15 15 0 0 0 30 0C39 20.2 27.2 9.5 24 3Z" fill="#087be5" />
+  <path d="M24 9c-3.1 6-10 14-10 20a10 10 0 0 0 20 0c0-6-6.9-14-10-20Z" fill="#0b45b5" />
+  <path d="M24 12c-2.8 6-7 12.1-7 17a7 7 0 0 0 7 7V12Z" fill="#42c8fa" />
+  <path d="M24 12c2.8 6 7 12.1 7 17a7 7 0 0 1-7 7V12Z" fill="#fff" opacity=".92" />
 </svg>
