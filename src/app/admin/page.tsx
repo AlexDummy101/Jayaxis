@@ -33,6 +33,8 @@ import {
 } from "@/lib/news";
 import {
   collection,
+  deleteDoc,
+  doc,
   getDocs,
   query,
   orderBy
@@ -154,6 +156,7 @@ function AdminDashboard() {
   const [quotes, setQuotes] = useState<QuoteDoc[]>([]);
   const [loadingQuotes, setLoadingQuotes] = useState(false);
   const [quotesError, setQuotesError] = useState("");
+  const [deletingQuoteId, setDeletingQuoteId] = useState<string | null>(null);
 
   // ==========================================
   // ORDERS STATE
@@ -226,6 +229,26 @@ function AdminDashboard() {
       setQuotesError("Could not load quotation requests from Firebase. Check the connection and Firestore admin read permissions.");
     } finally {
       setLoadingQuotes(false);
+    }
+  }
+
+  async function handleDeleteQuote(quoteId: string) {
+    if (!window.confirm("Are you sure you want to delete this quotation request? This cannot be undone.")) return;
+    if (!isFirebaseConfigured || !db) {
+      setStatusMsg({ text: "Cannot delete quotation request because Firebase is not configured.", type: "error" });
+      return;
+    }
+
+    setDeletingQuoteId(quoteId);
+    try {
+      await deleteDoc(doc(db, "quotation_requests", quoteId));
+      setQuotes(prev => prev.filter(quote => quote.id !== quoteId));
+      setStatusMsg({ text: "Quotation request deleted successfully.", type: "success" });
+    } catch (err) {
+      console.error("Could not delete quotation request:", err);
+      setStatusMsg({ text: "Failed to delete quotation request. Check Firestore admin permissions and try again.", type: "error" });
+    } finally {
+      setDeletingQuoteId(null);
     }
   }
 
@@ -1663,6 +1686,15 @@ function AdminDashboard() {
                   <div className="text-xs text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-100 mt-2">
                     <span className="font-bold text-sky-700 block mb-0.5">Item / Service: {q.item_requested}</span>
                     {q.scope && <p className="text-slate-600 mt-1">{q.scope}</p>}
+                  </div>
+                  <div className="flex justify-end pt-1">
+                    <button
+                      onClick={() => handleDeleteQuote(q.id)}
+                      disabled={deletingQuoteId !== null}
+                      className="inline-flex items-center gap-1 bg-red-50 hover:bg-red-100 disabled:opacity-50 text-red-600 text-xs font-bold px-3 py-1.5 rounded-lg transition-colors cursor-pointer disabled:cursor-not-allowed"
+                    >
+                      <Trash2 size={13} /> {deletingQuoteId === q.id ? "Deleting..." : "Delete"}
+                    </button>
                   </div>
                 </div>
               ))}

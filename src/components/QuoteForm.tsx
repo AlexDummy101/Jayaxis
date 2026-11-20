@@ -324,9 +324,9 @@ Please review and assist with pricing and scope.`;
             className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-sky-500 bg-white cursor-pointer"
           >
             <option value="">Select one of our services</option>
-            {services.map(s => (
+            {services.map((s, index) => (
               <option key={s.id} value={s.name}>
-                {s.number}. {s.name}
+                {String(index + 1).padStart(2, "0")}. {s.name}
               </option>
             ))}
             <option value="Multiple Services">Multiple Services / Turnkey Scheme</option>
