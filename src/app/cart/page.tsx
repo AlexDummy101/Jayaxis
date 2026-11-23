@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/components/Providers";
-import { products, price } from "@/lib/products";
+import { products, price, productDetailsHref } from "@/lib/products";
 import { ArrowRight, Trash2, ShoppingBag, FileText, ArrowLeft, ShieldCheck, Truck } from "lucide-react";
 
 export default function CartPage() {
@@ -93,7 +93,7 @@ export default function CartPage() {
                         <span className="text-[10px] font-extrabold text-sky-600 uppercase tracking-wider">
                           {p.category}
                         </span>
-                        <Link href={`/shop/${p.id}`}>
+                        <Link href={productDetailsHref(p.id)}>
                           <h3 className="text-sm font-extrabold text-slate-900 hover:text-sky-600 transition-colors">
                             {p.name}
                           </h3>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart } from "@/components/Providers";
-import { price } from "@/lib/products";
+import { price, productDetailsHref } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -209,7 +209,7 @@ export function QuickViewModal() {
                       Request a Custom Quote
                     </Link>
                     <Link
-                      href={`/shop/${quickViewProduct.id}`}
+                      href={productDetailsHref(quickViewProduct.id)}
                       onClick={() => setQuickViewProduct(null)}
                       className="text-xs text-sky-600 hover:text-sky-700 font-bold px-3 py-2.5 inline-flex items-center gap-1"
                     >

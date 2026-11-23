@@ -342,6 +342,10 @@ export const formatKES = (amount?: number) => {
 
 export const price = formatKES;
 
+export function productDetailsHref(id: string): string {
+  return `/product?id=${encodeURIComponent(id)}`;
+}
+
 // Helper to fetch all products from Firestore, falling back to default products if empty or offline
 export async function getProducts(): Promise<Product[]> {
   if (!isFirebaseConfigured || !db) {
@@ -415,4 +419,3 @@ export async function deleteProduct(productId: string): Promise<boolean> {
   await deleteDoc(doc(db, "products", productId));
   return true;
 }
-

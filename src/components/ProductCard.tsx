@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ShoppingBag, Eye, Heart, Star, Check } from "lucide-react";
 import { useState } from "react";
 import type { Product } from "@/lib/products";
-import { price } from "@/lib/products";
+import { price, productDetailsHref } from "@/lib/products";
 import { useCart } from "@/components/Providers";
 
 interface ProductCardProps {
@@ -51,7 +51,7 @@ export function ProductCard({ p, compact = false }: ProductCardProps) {
     >
       {/* Top Media Container */}
       <div className="relative aspect-[4/3] bg-slate-50 overflow-hidden">
-        <Link href={`/shop/${p.id}`} className="block w-full h-full">
+        <Link href={productDetailsHref(p.id)} className="block w-full h-full">
           <Image
             src={p.src || p.image || "/steel.jpeg"}
             alt={p.name}
@@ -121,7 +121,7 @@ export function ProductCard({ p, compact = false }: ProductCardProps) {
             </span>
           </div>
 
-          <Link href={`/shop/${p.id}`} className="block">
+          <Link href={productDetailsHref(p.id)} className="block">
             <h3 className="text-sm font-extrabold text-slate-900 group-hover:text-sky-600 transition-colors line-clamp-1">
               {p.name}
             </h3>
@@ -159,7 +159,7 @@ export function ProductCard({ p, compact = false }: ProductCardProps) {
           <div className="flex items-center gap-1.5">
             {p.stock === "Coming soon" ? (
               <Link
-                href={`/shop/${p.id}`}
+                href={productDetailsHref(p.id)}
                 className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-2 rounded-xl transition-all bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200"
               >
                 <Eye size={14} /> Preview

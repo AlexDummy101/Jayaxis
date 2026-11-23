@@ -123,7 +123,7 @@ export function HomeClient({ initialProducts, initialProjects }: HomeClientProps
   );
 
   const filteredProducts = liveProducts.filter(
-    p => selectedProductCat === "All" || p.category === selectedProductCat
+    p => p.featured && (selectedProductCat === "All" || p.category === selectedProductCat)
   );
 
   return (
