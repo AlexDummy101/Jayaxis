@@ -173,7 +173,7 @@ export function ProductLookup() {
             <div className="flex flex-wrap items-baseline justify-between gap-2 rounded-2xl border border-sky-100 bg-sky-50/60 p-5">
               <div>
                 <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-500">
-                  {product.price ? "Published Unit Estimate" : "Custom Project Sizing"}
+                  {product.price ? "Price" : "Custom Project Sizing"}
                 </span>
                 <div className="text-3xl font-black text-sky-700">{price(product.price)}</div>
               </div>

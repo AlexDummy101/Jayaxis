@@ -148,7 +148,7 @@ export function ProductCard({ p, compact = false }: ProductCardProps) {
           ) : (
             <div>
               <span className="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">
-                {p.price ? "Estimated Price" : "Enquiry Only"}
+                {p.price ? "Price" : "Enquiry Only"}
               </span>
               <b className="text-sm font-black text-slate-900 text-sky-700">
                 {price(p.price)}

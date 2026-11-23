@@ -171,7 +171,7 @@ export default async function ProductDetailPage({
               <div className="p-5 rounded-2xl bg-sky-50/60 border border-sky-100 flex flex-wrap items-baseline justify-between gap-2">
                 <div>
                   <span className="text-[11px] text-slate-500 font-semibold block uppercase tracking-wider">
-                    {product.price ? "Published Unit Estimate" : "Custom Project Sizing"}
+                    {product.price ? "Price" : "Custom Project Sizing"}
                   </span>
                   <div className="text-3xl font-black text-slate-900 text-sky-700">
                     {price(product.price)}
