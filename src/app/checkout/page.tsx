@@ -354,12 +354,12 @@ export default function CheckoutPage() {
             {/* Quick Actions */}
             <div className="space-y-3 pt-2">
               <a
-                href={`https://wa.me/254185224887?text=${whatsappMessage}`}
+                href={`https://wa.me/254183947157?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl text-xs transition-colors shadow-md"
               >
-                <MessageCircle size={16} /> Confirm via WhatsApp Support (+254 185 224 887)
+                <MessageCircle size={16} /> Confirm via WhatsApp Support (+254 183 947 157)
               </a>
 
               <Link

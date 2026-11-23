@@ -56,8 +56,8 @@ export default function ContactPage() {
             </div>
             <h3 className="text-sm font-extrabold text-slate-900">Phone Support</h3>
             <p className="text-xs text-slate-500">Direct engineering line</p>
-            <a href="tel:+254185224887" className="text-xs font-bold text-sky-600 hover:text-sky-800 block">
-              (+254) 185  224 887
+            <a href="tel:+254183947157" className="text-xs font-bold text-sky-600 hover:text-sky-800 block">
+              (+254) 183 947 157
             </a>
           </div>
 
@@ -68,7 +68,7 @@ export default function ContactPage() {
             <h3 className="text-sm font-extrabold text-slate-900">WhatsApp Desk</h3>
             <p className="text-xs text-slate-500">Fast response & PDF quotes</p>
             <a
-              href="https://wa.me/+254185224887"
+              href="https://wa.me/254183947157"
               target="_blank"
               rel="noreferrer"
               className="text-xs font-bold text-emerald-600 hover:text-emerald-800 block"

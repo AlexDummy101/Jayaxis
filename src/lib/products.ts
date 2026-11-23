@@ -348,7 +348,7 @@ export function productPriceText(product: Pick<Product, "price" | "priceOnReques
 
 export function productQuotationWhatsAppHref(product: Pick<Product, "name" | "sku">): string {
   const message = `Hello Jayaxis Company Ltd, I would like to request a quotation for *${product.name}* (${product.sku}).`;
-  return `https://wa.me/254185224887?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/254183947157?text=${encodeURIComponent(message)}`;
 }
 
 export function productDetailsHref(id: string): string {

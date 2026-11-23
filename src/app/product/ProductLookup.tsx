@@ -213,7 +213,7 @@ export function ProductLookup() {
             {product.stock === "Coming soon" ? (
               <div className="flex flex-col gap-3 border-t border-slate-100 pt-4 sm:flex-row">
                 <a
-                  href={`https://wa.me/254185224887?text=${encodeURIComponent(`Hello Jayaxis Company Ltd, I am inquiring about ${product.name} (${product.sku}). Please notify me when available.`)}`}
+                  href={`https://wa.me/254183947157?text=${encodeURIComponent(`Hello Jayaxis Company Ltd, I am inquiring about ${product.name} (${product.sku}). Please notify me when available.`)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3.5 text-xs font-extrabold text-white hover:bg-emerald-700"
@@ -250,7 +250,7 @@ export function ProductLookup() {
                     <FileText size={15} /> Request Formal Quotation
                   </Link>
                   <a
-                    href={`https://wa.me/254185224887?text=${encodeURIComponent(`Hello Jayaxis, I would like to inquire about ${product.name} (${product.sku}).`)}`}
+                    href={`https://wa.me/254183947157?text=${encodeURIComponent(`Hello Jayaxis, I would like to inquire about ${product.name} (${product.sku}).`)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-xs font-bold text-white hover:bg-emerald-600"

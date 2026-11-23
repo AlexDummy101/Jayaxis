@@ -48,11 +48,11 @@ export function Navbar() {
           {/* Contact Details */}
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <a
-              href="tel:+254185224887"
+              href="tel:+254183947157"
               className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
             >
               <Phone size={13} className="text-sky-400" />
-              <span>Hotline: <strong className="text-white">(+254) 185 224 887</strong></span>
+              <span>Hotline: <strong className="text-white">(+254) 183 947 157</strong></span>
             </a>
             <a
               href="mailto:jayaxiscompany@gmail.com"
@@ -74,7 +74,7 @@ export function Navbar() {
             </span>
             <div className="flex items-center gap-2 text-sky-300">
               <a
-                href="https://wa.me/+254185224887"
+                href="https://wa.me/254183947157"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-emerald-400 transition-colors p-1"
@@ -328,10 +328,10 @@ export function Navbar() {
                     Request a Quote
                   </Link>
                   <a
-                    href="tel:+254185224887"
+                    href="tel:+254183947157"
                     className="w-full text-center bg-slate-900 text-white font-bold py-2.5 rounded-xl text-xs"
                   >
-                    Call (+254) 185 224 887
+                    Call (+254) 183 947 157
                   </a>
                 </div>
               </div>
@@ -367,7 +367,7 @@ function FloatingActions() {
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
       {/* WhatsApp Quick Chat Floating Button */}
       <a
-        href="https://wa.me/+254185224887?text=Hello%20Jayaxis,%20I%20would%20like%20to%20inquire%20about%20your%20services%20and%20products."
+        href="https://wa.me/254183947157?text=Hello%20Jayaxis,%20I%20would%20like%20to%20inquire%20about%20your%20services%20and%20products."
         target="_blank"
         rel="noreferrer"
         className="w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/30 hover:scale-105 transition-all"
@@ -550,18 +550,13 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone size={16} className="text-sky-400 flex-shrink-0" />
-                <a href="tel:+254185224887" className="hover:text-white">
-                  (+254) 185 224 887
+                <a href="tel:+254183947157" className="hover:text-white">
+                  (+254) 183 947 157
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <MessageCircle size={16} className="text-emerald-400 flex-shrink-0" />
-                <a href="https://wa.me/+254185224887    
-                
-                
-                
-                
-                " target="_blank" rel="noreferrer" className="hover:text-white">
+                <a href="https://wa.me/254183947157" target="_blank" rel="noreferrer" className="hover:text-white">
                   WhatsApp Support Desk
                 </a>
               </div>
