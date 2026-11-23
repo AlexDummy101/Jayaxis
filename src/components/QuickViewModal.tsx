@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart } from "@/components/Providers";
-import { productDetailsHref, productPriceText } from "@/lib/products";
+import { productDetailsHref, productPriceText, productQuotationWhatsAppHref } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -172,6 +172,15 @@ export function QuickViewModal() {
                     >
                       <MessageCircle size={16} /> Inquire Availability via WhatsApp
                     </a>
+                  ) : quickViewProduct.priceOnRequest ? (
+                    <a
+                      href={productQuotationWhatsAppHref(quickViewProduct)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold h-10 px-4 rounded-xl text-xs transition-all shadow-md shadow-emerald-600/20"
+                    >
+                      <MessageCircle size={16} /> Request Quotation on WhatsApp
+                    </a>
                   ) : (
                     <div className="flex items-center gap-3">
                       <div className="flex items-center border border-slate-200 rounded-xl bg-white overflow-hidden">
@@ -203,13 +212,15 @@ export function QuickViewModal() {
                   )}
 
                   <div className="flex items-center gap-2">
-                    <Link
-                      href={`/quote?item=${encodeURIComponent(quickViewProduct.name)}`}
-                      onClick={() => setQuickViewProduct(null)}
-                      className="flex-1 text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-3 rounded-xl text-xs transition-colors"
-                    >
-                      Request a Custom Quote
-                    </Link>
+                    {!quickViewProduct.priceOnRequest && (
+                      <Link
+                        href={`/quote?item=${encodeURIComponent(quickViewProduct.name)}`}
+                        onClick={() => setQuickViewProduct(null)}
+                        className="flex-1 text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-3 rounded-xl text-xs transition-colors"
+                      >
+                        Request a Custom Quote
+                      </Link>
+                    )}
                     <Link
                       href={productDetailsHref(quickViewProduct.id)}
                       onClick={() => setQuickViewProduct(null)}

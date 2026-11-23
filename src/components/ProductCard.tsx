@@ -3,10 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ShoppingBag, Eye, Heart, Star, Check } from "lucide-react";
+import { ShoppingBag, Eye, Heart, Star, Check, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import type { Product } from "@/lib/products";
-import { productDetailsHref, productPriceText } from "@/lib/products";
+import { productDetailsHref, productPriceText, productQuotationWhatsAppHref } from "@/lib/products";
 import { useCart } from "@/components/Providers";
 
 interface ProductCardProps {
@@ -166,6 +166,16 @@ export function ProductCard({ p, compact = false }: ProductCardProps) {
               >
                 <Eye size={14} /> Preview
               </Link>
+            ) : p.priceOnRequest ? (
+              <a
+                href={productQuotationWhatsAppHref(p)}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-3 py-2 text-xs font-bold text-white transition-all hover:bg-emerald-700"
+                aria-label={`Request a WhatsApp quotation for ${p.name}`}
+              >
+                <MessageCircle size={14} /> Request Quotation
+              </a>
             ) : (
               <button
                 onClick={handleAdd}

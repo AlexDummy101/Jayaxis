@@ -16,7 +16,13 @@ import {
 } from "lucide-react";
 import { AddToCart } from "@/components/ShopActions";
 import { ProductCard } from "@/components/ProductCard";
-import { getProductById, getProducts, productPriceText, type Product } from "@/lib/products";
+import {
+  getProductById,
+  getProducts,
+  productPriceText,
+  productQuotationWhatsAppHref,
+  type Product
+} from "@/lib/products";
 
 type LoadState = "loading" | "ready" | "not-found" | "error";
 
@@ -222,6 +228,18 @@ export function ProductLookup() {
                 </Link>
               </div>
             ) : (
+              product.priceOnRequest ? (
+                <div className="border-t border-slate-100 pt-4">
+                  <a
+                    href={productQuotationWhatsAppHref(product)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3.5 text-sm font-extrabold text-white hover:bg-emerald-700"
+                  >
+                    <MessageCircle size={17} /> Request Quotation on WhatsApp
+                  </a>
+                </div>
+              ) : (
               <div className="space-y-3 border-t border-slate-100 pt-4">
                 <AddToCart id={product.id} productName={product.name} product={product} />
                 <div className="flex flex-col gap-3 pt-2 sm:flex-row">
@@ -241,6 +259,7 @@ export function ProductLookup() {
                   </a>
                 </div>
               </div>
+              )
             )}
           </div>
         </div>

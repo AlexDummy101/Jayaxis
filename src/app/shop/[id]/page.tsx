@@ -11,7 +11,7 @@ import {
   FileText,
   MessageCircle
 } from "lucide-react";
-import { price, getProductById, getProducts } from "@/lib/products";
+import { price, getProductById, getProducts, productQuotationWhatsAppHref } from "@/lib/products";
 import { AddToCart } from "@/components/ShopActions";
 import { ProductCard } from "@/components/ProductCard";
 
@@ -228,6 +228,18 @@ export default async function ProductDetailPage({
                 </div>
               </div>
             ) : (
+              product.priceOnRequest ? (
+                <div className="pt-4 border-t border-slate-100">
+                  <a
+                    href={productQuotationWhatsAppHref(product)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm py-3.5 px-6 rounded-xl transition-all shadow-md shadow-emerald-600/20"
+                  >
+                    <MessageCircle size={17} /> Request Quotation on WhatsApp
+                  </a>
+                </div>
+              ) : (
               <div className="pt-4 border-t border-slate-100 space-y-3">
                 <AddToCart id={product.id} productName={product.name} product={product} />
 
@@ -249,6 +261,7 @@ export default async function ProductDetailPage({
                   </a>
                 </div>
               </div>
+              )
             )}
           </div>
         </div>
