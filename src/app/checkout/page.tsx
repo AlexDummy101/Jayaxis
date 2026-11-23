@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useCart } from "@/components/Providers";
-import { products, price } from "@/lib/products";
+import { products, productPriceText } from "@/lib/products";
 import { kenyanCounties } from "@/components/QuoteForm";
 import {
   saveCustomerUser,
@@ -678,15 +678,17 @@ export default function CheckoutPage() {
                       <div>
                         <p className="font-bold text-slate-800 truncate max-w-[200px]">{line.p.name}</p>
                         <span className="text-[11px] text-slate-400">
-                          Qty: {line.qty} × {price(line.p.price)}
+                          Qty: {line.qty} × {productPriceText(line.p)}
                         </span>
                       </div>
                       <span className="font-bold text-slate-900">
-                        {new Intl.NumberFormat("en-KE", {
-                          style: "currency",
-                          currency: "KES",
-                          maximumFractionDigits: 0
-                        }).format((line.p.price || 0) * line.qty)}
+                        {line.p.priceOnRequest
+                          ? "Request Quotation"
+                          : new Intl.NumberFormat("en-KE", {
+                              style: "currency",
+                              currency: "KES",
+                              maximumFractionDigits: 0
+                            }).format((line.p.price || 0) * line.qty)}
                       </span>
                     </div>
                   ))}

@@ -342,6 +342,10 @@ export const formatKES = (amount?: number) => {
 
 export const price = formatKES;
 
+export function productPriceText(product: Pick<Product, "price" | "priceOnRequest">): string {
+  return product.priceOnRequest ? "Request Quotation" : formatKES(product.price);
+}
+
 export function productDetailsHref(id: string): string {
   return `/product?id=${encodeURIComponent(id)}`;
 }

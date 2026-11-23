@@ -170,16 +170,20 @@ export default async function ProductDetailPage({
             ) : (
               <div className="p-5 rounded-2xl bg-sky-50/60 border border-sky-100 flex flex-wrap items-baseline justify-between gap-2">
                 <div>
-                  <span className="text-[11px] text-slate-500 font-semibold block uppercase tracking-wider">
-                    {product.price ? "Price" : "Custom Project Sizing"}
-                  </span>
-                  <div className="text-3xl font-black text-slate-900 text-sky-700">
-                    {price(product.price)}
+                  {!product.priceOnRequest && (
+                    <span className="text-[11px] text-slate-500 font-semibold block uppercase tracking-wider">
+                      {product.price ? "Price" : "Custom Project Sizing"}
+                    </span>
+                  )}
+                  <div className={`text-3xl font-black ${product.priceOnRequest ? "text-slate-900" : "text-sky-700"}`}>
+                    {product.priceOnRequest ? "Request Quotation" : price(product.price)}
                   </div>
                 </div>
-                <span className="text-xs text-sky-700 bg-white px-3 py-1 rounded-full font-bold border border-sky-200">
-                  VAT Inclusive Estimate
-                </span>
+                {!product.priceOnRequest && (
+                  <span className="text-xs text-sky-700 bg-white px-3 py-1 rounded-full font-bold border border-sky-200">
+                    VAT Inclusive Estimate
+                  </span>
+                )}
               </div>
             )}
 

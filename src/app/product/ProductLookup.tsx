@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { AddToCart } from "@/components/ShopActions";
 import { ProductCard } from "@/components/ProductCard";
-import { getProductById, getProducts, price, type Product } from "@/lib/products";
+import { getProductById, getProducts, productPriceText, type Product } from "@/lib/products";
 
 type LoadState = "loading" | "ready" | "not-found" | "error";
 
@@ -172,14 +172,20 @@ export function ProductLookup() {
 
             <div className="flex flex-wrap items-baseline justify-between gap-2 rounded-2xl border border-sky-100 bg-sky-50/60 p-5">
               <div>
-                <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-500">
-                  {product.price ? "Price" : "Custom Project Sizing"}
-                </span>
-                <div className="text-3xl font-black text-sky-700">{price(product.price)}</div>
+                {!product.priceOnRequest && (
+                  <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                    {product.price ? "Price" : "Custom Project Sizing"}
+                  </span>
+                )}
+                <div className={`text-3xl font-black ${product.priceOnRequest ? "text-slate-900" : "text-sky-700"}`}>
+                  {productPriceText(product)}
+                </div>
               </div>
-              <span className="rounded-full border border-sky-200 bg-white px-3 py-1 text-xs font-bold text-sky-700">
-                VAT Inclusive Estimate
-              </span>
+              {!product.priceOnRequest && (
+                <span className="rounded-full border border-sky-200 bg-white px-3 py-1 text-xs font-bold text-sky-700">
+                  VAT Inclusive Estimate
+                </span>
+              )}
             </div>
 
             <p className="text-xs leading-relaxed text-slate-600 sm:text-sm">{product.description}</p>

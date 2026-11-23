@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/components/Providers";
-import { products, price, productDetailsHref } from "@/lib/products";
+import { products, productDetailsHref, productPriceText } from "@/lib/products";
 import { ArrowRight, Trash2, ShoppingBag, FileText, ArrowLeft, ShieldCheck, Truck } from "lucide-react";
 
 export default function CartPage() {
@@ -99,7 +99,7 @@ export default function CartPage() {
                           </h3>
                         </Link>
                         <p className="text-xs font-bold text-slate-900 mt-1">
-                          {price(p.price)}
+                          {productPriceText(p)}
                         </p>
                       </div>
                     </div>

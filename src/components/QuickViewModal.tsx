@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart } from "@/components/Providers";
-import { price, productDetailsHref } from "@/lib/products";
+import { productDetailsHref, productPriceText } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -128,8 +128,10 @@ export function QuickViewModal() {
                     </div>
                   ) : (
                     <div className="text-2xl font-black text-sky-600 mb-4">
-                      {price(quickViewProduct.price)}
-                      <span className="text-xs font-normal text-slate-400 ml-2">VAT inclusive / quote estimate</span>
+                      {productPriceText(quickViewProduct)}
+                      {!quickViewProduct.priceOnRequest && (
+                        <span className="text-xs font-normal text-slate-400 ml-2">VAT inclusive / quote estimate</span>
+                      )}
                     </div>
                   )}
 

@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ShoppingBag, Eye, Heart, Star, Check } from "lucide-react";
 import { useState } from "react";
 import type { Product } from "@/lib/products";
-import { price, productDetailsHref } from "@/lib/products";
+import { productDetailsHref, productPriceText } from "@/lib/products";
 import { useCart } from "@/components/Providers";
 
 interface ProductCardProps {
@@ -147,11 +147,13 @@ export function ProductCard({ p, compact = false }: ProductCardProps) {
             </div>
           ) : (
             <div>
-              <span className="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">
-                {p.price ? "Price" : "Enquiry Only"}
-              </span>
-              <b className="text-sm font-black text-slate-900 text-sky-700">
-                {price(p.price)}
+              {!p.priceOnRequest && (
+                <span className="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">
+                  {p.price ? "Price" : "Enquiry Only"}
+                </span>
+              )}
+              <b className={`text-sm font-black text-slate-900 ${p.priceOnRequest ? "" : "text-sky-700"}`}>
+                {productPriceText(p)}
               </b>
             </div>
           )}

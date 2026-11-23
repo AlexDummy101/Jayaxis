@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart } from "@/components/Providers";
-import { products, price } from "@/lib/products";
+import { products, productPriceText } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -128,7 +128,7 @@ export function CartDrawer() {
                               {product.name}
                             </h4>
                             <p className="text-xs font-bold text-slate-900 mt-0.5">
-                              {price(product.price)}
+                              {productPriceText(product)}
                             </p>
                           </div>
 
