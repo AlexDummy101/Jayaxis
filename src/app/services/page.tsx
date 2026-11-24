@@ -35,7 +35,7 @@ export default function ServicesPage() {
           Comprehensive Capabilities
         </span>
         <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
-          Our 8 Engineering Services
+          Our Services
         </h1>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
           From groundwater hydrogeological surveys and deep borehole drilling to elevated structural steel water towers, solar pumping, and civil works, Jayaxis Company Ltd provides turnkey solutions across Kenya.
