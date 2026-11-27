@@ -70,7 +70,7 @@ function ShopBrowserContent({ initialCategory = "All", initialProducts }: ShopBr
           <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
-            placeholder="Search pumps, solar equipment, tanks, pipes, accessories, PPE..."
+            placeholder="Search pumps, generators, solar equipment, tanks, pipes, accessories, PPE..."
             value={search}
             onChange={e => setSearch(e.target.value)}
             className="w-full pl-10 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-sky-500 focus:bg-white transition-all"
@@ -204,4 +204,3 @@ export function ShopBrowser(props: ShopBrowserProps) {
     </Suspense>
   );
 }
-

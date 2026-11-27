@@ -325,6 +325,7 @@ export const categories = [
   "All",
   "Water Pumps",
   "Solar PV Systems",
+  "Machines and Generators",
   "Pump Accessories & Automation",
   "Pipes, Cables & Fittings",
   "Water Treatment & Filtration",
